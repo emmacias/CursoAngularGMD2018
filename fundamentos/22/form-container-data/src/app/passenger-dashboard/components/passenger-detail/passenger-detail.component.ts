@@ -60,7 +60,6 @@ export class PassengerDetailComponent implements OnChanges {
   }
   
   toggleEdit() {
-    debugger;
     if (this.editing) {
       this.edit.emit(this.detail);
     }
