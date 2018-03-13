@@ -1,7 +1,8 @@
-import { Component, Output, EventEmitter, ContentChild, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
+import { Component, Output, EventEmitter, ContentChild, AfterContentInit, ContentChildren, QueryList, AfterViewInit, ViewChild, ChangeDetectorRef, ViewChildren } from '@angular/core';
 
 import { User } from './auth-form.interface';
 import { AuthRememberComponent } from './auth-remember.component';
+import { AuthMessageComponent } from './auth-message.component';
 
 
 @Component({
@@ -28,19 +29,31 @@ import { AuthRememberComponent } from './auth-remember.component';
     </div>
   `
 })
-export class AuthFormComponent implements AfterContentInit {
+export class AuthFormComponent implements AfterContentInit, AfterViewInit {
+
 
 
   showMessage: boolean;
 
-  //¿Como accedo a 1, 2, 3 componentes?
-  /*@ContentChild(AuthRememberComponent) remember : 
-                                                AuthRememberComponent;
-*/
+  
+  @ViewChildren(AuthMessageComponent) message: QueryList<AuthMessageComponent>;
+
   @ContentChildren(AuthRememberComponent) remember:
                   QueryList<AuthRememberComponent>;
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
+
+  constructor(private cd: ChangeDetectorRef){};
+
+  ngAfterViewInit(): void {
+    if(this.message){
+      this.message.forEach((message)=>{
+          message.days = 30;
+      });
+    }
+    
+    this.cd.detectChanges;
+  }
 
   ngAfterContentInit(): void {
     if(this.remember){
