@@ -18,7 +18,7 @@ import { User } from './auth-form/auth-form.interface';
         <h3>Login</h3>
         <auth-remember 
            (checked)="rememberUser($event)">
-        </auth-remember>
+        </auth-remember>              
         <button type="submit">
         Login
         </button>        
@@ -32,7 +32,7 @@ export class AppComponent {
   rememberMe: boolean = false;
 
   rememberUser(remember: boolean){
-    debugger;
+
     this.rememberMe= remember;
   }
 
