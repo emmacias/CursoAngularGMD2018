@@ -20,9 +20,8 @@ import { AuthRememberComponent } from './auth-remember.component';
         </label>
         <ng-content select="auth-remember"></ng-content>
 
-        <div *ngIf="showMessage">
-          You will be logged by 30 days
-        </div>
+       <auth-message [style.display]="showMessage ? 'inherit' : 'none'">
+       </auth-message>
 
         <ng-content select="button"></ng-content>
       </form>
