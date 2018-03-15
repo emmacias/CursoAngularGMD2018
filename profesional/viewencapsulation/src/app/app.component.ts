@@ -5,9 +5,9 @@ import { Component } from '@angular/core';
   template: `
     <div>
     
-      <button (click)="addProp"> Add property </button>
-      <button (click)="changeUser"> Change user object </button>
-      <button (click)="changeName"> Change name property <button>
+      <button (click)="addProp()"> Add property </button>
+      <button (click)="changeUser()"> Change user object </button>
+      <button (click)="changeName()"> Change name property </button>
 
       <div class="users">
         <example-one [user]="user"></example-one>

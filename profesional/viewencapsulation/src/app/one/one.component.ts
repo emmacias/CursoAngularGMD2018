@@ -16,7 +16,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
       {{ user.location }} <br />
       {{ user.email }}
       
-      <button (click)="update()">Internal update</button>
+      <button (click)="update()">Internal update 1</button>
       <p>* should not update</p>
     </div>
   `
