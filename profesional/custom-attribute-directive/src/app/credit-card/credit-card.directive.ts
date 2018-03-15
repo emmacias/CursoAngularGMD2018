@@ -1,11 +1,14 @@
 
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, HostBinding } from '@angular/core';
 
 @Directive({ selector: '[credit-card]' })
 export class CreditCardDirective {
     constructor(private element: ElementRef) { 
         console.log(this.element);
     }
+
+    @HostBinding('style.border')
+    border: string;
 
     @HostListener('input', ['$event'])
     onKeyDown(event: KeyboardEvent){
@@ -22,7 +25,12 @@ export class CreditCardDirective {
           numbers.push(trimmed.substr(i, 4));
         }
     
-        input.value = numbers.join(' ');        
+        input.value = numbers.join(' ');      
+        
+        this.border = '';
+        if (/[^\d]+/.test(trimmed)) {
+            this.border ='1px solid red';   
+        }
 
     }
 
