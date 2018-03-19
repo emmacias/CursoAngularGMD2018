@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Product } from '../../models/product.interface';
 
 @Component({
   selector: 'stock-inventory',

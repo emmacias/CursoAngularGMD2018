@@ -50,16 +50,19 @@ export class PassengerDetailComponent {
   constructor() {}
   
   onNameChange(value: string) {
+    debugger;
     this.detail.fullname = value;
   }
   
   toggleEdit() {
+    debugger;
     if (this.editing) {
       this.edit.emit(this.detail);
     }
     this.editing = !this.editing;
   }
   onRemove() {
+    debugger;
     this.remove.emit(this.detail);
   }
 }
