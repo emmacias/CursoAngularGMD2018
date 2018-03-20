@@ -31,6 +31,10 @@ import { Product, Item } from '../../models/product.interface';
           (removed)="removeStock($event)">
         </stock-products>
 
+        <div class="stock-inventory__price">
+          Total: {{ total | currency:'USD':true }}
+        </div>
+
         <div class="stock-inventory__buttons">
           <button 
             type="submit"
