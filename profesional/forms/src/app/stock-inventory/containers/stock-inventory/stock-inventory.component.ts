@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { Product } from '../../models/product.interface';
 
 @Component({
@@ -48,24 +48,42 @@ export class StockInventoryComponent {
     { "id": 5, "price": 600, "name": "Apple Watch" },
   ];
 
+    constructor( private fb: FormBuilder){}
 
-    form = new FormGroup({
-      store: new FormGroup({
-        branch: new FormControl(''),
-        code: new FormControl('')
-      }),
-      selector: this.createStock({}),
-      stock: new FormArray([
-          this.createStock({ product_id: 1, quantity: 10 }),
-          this.createStock({ product_id: 2, quantity: 50 }),
-      ])
+    // form = new FormGroup({
+    //   store: new FormGroup({
+    //     branch: new FormControl(''),
+    //     code: new FormControl('')
+    //   }),
+    //   selector: this.createStock({}),
+    //   stock: new FormArray([
+    //       this.createStock({ product_id: 1, quantity: 10 }),
+    //       this.createStock({ product_id: 2, quantity: 50 }),
+    //   ])
+    // })
+
+    form = this.fb.group({
+        store: this.fb.group({
+          branch: '',
+          code: ''
+        }),
+        selector: this.createStock({}),
+        stock: this.fb.array([
+            this.createStock({product_id: 1, quantity: 10 }),
+            this.createStock({product_id: 2, quantity: 50 }),
+        ])
     })
 
+
     createStock(stock){
-      return new FormGroup({
-          product_id: new FormControl(parseInt(stock.product_id, 10) || ''),
-          quantity: new FormControl(stock.quantity || 10) 
-      });
+      // return new FormGroup({
+      //     product_id: new FormControl(parseInt(stock.product_id, 10) || ''),
+      //     quantity: new FormControl(stock.quantity || 10) 
+      // });
+      return this.fb.group({
+        product_id : parseInt(stock.product_id, 10) || '',
+        quantity: stock.quantity || 10
+      })
     }
 
 
