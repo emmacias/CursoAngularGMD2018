@@ -10,9 +10,6 @@ import { Product, Item } from '../models/product.interface';
 
 @Injectable()
 export class StockInventoryService {
-
-
-
   constructor(
     private http: Http
   ) {}

@@ -12,7 +12,7 @@ const COUNTER_CONTROL_ACCESSOR = {
   providers: [COUNTER_CONTROL_ACCESSOR],
   styleUrls: ['stock-counter.component.scss'],
   template: `
-  <div 
+    <div 
       class="stock-counter"
       [class.focused]="focus">
       <div>
@@ -87,7 +87,6 @@ export class StockCounterComponent implements ControlValueAccessor {
     event.stopPropagation();
     this.onTouch();
   }
-
   onFocus(event: FocusEvent) {
     this.focus = true;
     event.preventDefault();
@@ -95,7 +94,6 @@ export class StockCounterComponent implements ControlValueAccessor {
     this.onTouch();
   }
 
-  
   increment() {
     if (this.value < this.max) {
       this.value = this.value + this.step;
