@@ -23,7 +23,7 @@ import { Product } from '../../models/product.interface';
           min="10"
           max="1000"
           formControlName="quantity">
-          <button type="button" (click)="onAdd">
+          <button type="button" (click)="onAdd()">
             Add stock
           </button>
       </div>
@@ -41,6 +41,7 @@ export class StockSelectorComponent {
   products: Product[];
 
   onAdd(){
+    debugger;
     this.added.emit(this.parent.get('selector').value);
   }
 }
