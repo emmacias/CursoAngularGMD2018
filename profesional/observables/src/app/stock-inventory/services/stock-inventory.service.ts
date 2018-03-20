@@ -10,20 +10,23 @@ import { Product, Item } from '../models/product.interface';
 
 @Injectable()
 export class StockInventoryService {
+
+
+
   constructor(
     private http: Http
   ) {}
 
   getCartItems(): Observable<Item[]> {
     return this.http
-      .get('/api/cart')
+      .get('http://localhost:3000/cart')
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   getProducts(): Observable<Product[]> {
     return this.http
-      .get('/api/products')
+      .get('http://localhost:3000/products')
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
