@@ -51,6 +51,8 @@ import { Product, Item } from '../../models/product.interface';
 })
 export class StockInventoryComponent implements OnInit {
 
+  total: number;
+
   products: Product[];
 
   productMap: Map<number, Product>;
@@ -67,7 +69,7 @@ export class StockInventoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private stockService: StockInventoryService
-  ) {}
+  ) { }
 
   ngOnInit() {
     const cart = this.stockService.getCartItems();
@@ -76,16 +78,30 @@ export class StockInventoryComponent implements OnInit {
     Observable
       .forkJoin(cart, products)
       .subscribe(([cart, products]: [Item[], Product[]]) => {
-        
+
         const myMap = products
           .map<[number, Product]>(product => [product.id, product]);
-        
+
         this.productMap = new Map<number, Product>(myMap);
         this.products = products;
         cart.forEach(item => this.addStock(item));
+
+        this.calculateTotal(this.form.get('stock').value);
+        this.form.get('stock').valueChanges.subscribe(
+          value => this.calculateTotal(value));
       });
 
   }
+
+
+  calculateTotal(value: Item[]) {
+      const total = value.reduce( (prev, next) => {
+        return prev + (next.quantity * this.productMap.get(next.product_id).price);
+      }, 0);
+
+      this.total = total;
+  }
+
 
   createStock(stock) {
     return this.fb.group({
