@@ -26,7 +26,9 @@ import { Passenger } from '../../models/passenger.interface';
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
+
   constructor(private passengerService: PassengerDashboardService) {}
+  
   ngOnInit() {
      this.passengerService
       .getPassengers()

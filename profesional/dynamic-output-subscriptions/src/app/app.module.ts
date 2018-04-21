@@ -1,22 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
+import { AuthFormModule } from './auth-form/auth-form.module';
 
 import { AppComponent } from './app.component';
-import { AuthFormModule } from './auth-form/auth-form.module';
-import { OtherComponent } from './other.component';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OtherComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AuthFormModule
   ],
-  providers: [],
-  bootstrap: [OtherComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
-export class AppModule { }
+export class AppModule {}

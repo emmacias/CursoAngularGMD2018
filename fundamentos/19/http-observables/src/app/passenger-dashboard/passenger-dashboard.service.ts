@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { Passenger } from './models/passenger.interface';
 
-const PASSENGER_API: string = 'http://localhost:3004/passengers';
+const PASSENGER_API: string = 'http://localhost:3000/passengers';
 
 @Injectable()
 export class PassengerDashboardService {

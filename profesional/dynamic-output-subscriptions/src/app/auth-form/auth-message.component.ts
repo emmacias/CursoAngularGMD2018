@@ -1,19 +1,13 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'auth-message',
-    template:`
-        <div>
-            You will be logged if for {{ days }} days
-
-        </div>
-    
-    `
-
+  selector: 'auth-message',
+  template: `
+    <div>
+      You will be logged in for {{ days }} days
+    </div>
+  `
 })
-
-export class AuthMessageComponent  {
-    
-    days: number = 7;
+export class AuthMessageComponent {
+  days: number = 7;
 }

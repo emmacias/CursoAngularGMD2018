@@ -1,30 +1,27 @@
-
-
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
-import { AuthFormComponent } from './auth-form.component';
 import { CommonModule } from '@angular/common';
+
+import { AuthFormComponent } from './auth-form.component';
 import { AuthRememberComponent } from './auth-remember.component';
 import { AuthMessageComponent } from './auth-message.component';
 
 @NgModule({
-    imports: [
+  declarations: [
+    AuthFormComponent,
+    AuthRememberComponent,
+    AuthMessageComponent
+  ],
+  imports: [
     CommonModule,
-    FormsModule        
-    ],
-    exports: [
-        AuthFormComponent,
-        AuthRememberComponent
-    ],
-    declarations: [
-        AuthFormComponent, 
-        AuthRememberComponent,
-        AuthMessageComponent
-    ],
-    providers: [],
-    entryComponents:[
-        AuthFormComponent
-    ]
+    FormsModule
+  ],
+  exports: [
+    AuthFormComponent,
+    AuthRememberComponent
+  ],
+  entryComponents: [
+    AuthFormComponent
+  ]
 })
-export class AuthFormModule { }
+export class AuthFormModule {}
